@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage{type1cm}
+\AtBeginDocument{%
+\SetSymbolFont{operators}   {normal}{OT1}{cmr} {m}{n}
+\SetSymbolFont{letters}     {normal}{OML}{cmm} {m}{it}
+\SetSymbolFont{symbols}     {normal}{OMS}{cmsy}{m}{n}
+\SetSymbolFont{largesymbols}{normal}{OMX}{cmex}{m}{n}
+\SetSymbolFont{operators}   {bold}  {OT1}{cmr} {bx}{n}
+\SetSymbolFont{letters}     {bold}  {OML}{cmm} {b}{it}
+\SetSymbolFont{symbols}     {bold}  {OMS}{cmsy}{b}{n}
+\SetSymbolFont{largesymbols}{bold}  {OMX}{cmex}{m}{n}
+\SetMathAlphabet{\mathbf}{normal}{OT1}{cmr}{bx}{n}
+\SetMathAlphabet{\mathsf}{normal}{OT1}{cmss}{m}{n}
+\SetMathAlphabet{\mathit}{normal}{OT1}{cmr}{m}{it}
+\SetMathAlphabet{\mathtt}{normal}{OT1}{cmtt}{m}{n}
+\SetMathAlphabet{\mathbf}{bold}  {OT1}{cmr}{bx}{n}
+\SetMathAlphabet{\mathsf}{bold}  {OT1}{cmss}{bx}{n}
+\SetMathAlphabet{\mathit}{bold}  {OT1}{cmr}{bx}{it}
+\SetMathAlphabet{\mathtt}{bold}  {OT1}{cmtt}{m}{n}
+}
+\begin{document}
+in other words, x consists of some arbitrary (but infinite) binary string $\alpha$, followed by
+a 0, which is followed by $a+1$ ones, and followed by $b$ zeros, for some $a\ge 0$ and $b\ge 0$.
+(The exceptions occur when $x = -2^b$; then $a=\infty$.) Consequently
+\begin{eqnarray}
+  \bar x &=& (\bar \alpha 1 0^a 0 1^b)_2,\\
+  x - 1 &=& (\alpha 0 1^a 0 1^b)_2,\\
+  - x &=& (\bar \alpha 1 0^a 0 1^b)_2;
+\end{eqnarray}
+\end{document}

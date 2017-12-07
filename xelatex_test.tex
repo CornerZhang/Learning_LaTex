@@ -1,0 +1,66 @@
+% XeLaTeX can use any Mac OS X font. See the setromanfont command below.
+% Input to XeLaTeX is full Unicode, so Unicode characters can be typed directly into the source.
+
+% The next lines tell TeXShop to typeset with xelatex, and to open and save the source with Unicode encoding.
+
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[12pt]{paper}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\usepackage{CJK}
+
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+
+% Will Robertson's fontspec.sty can be used to simplify font choices.
+% To experiment, open /Applications/Font Book to examine the fonts provided on Mac OS X,
+% and change "Hoefler Text" to any of these choices.
+
+\usepackage{fontspec,xltxtra,xunicode}
+\defaultfontfeatures{Mapping=tex-text}
+\setromanfont[Mapping=tex-text]{Hoefler Text}
+\setsansfont[Scale=MatchLowercase,Mapping=tex-text]{Gill Sans}
+\setmonofont[Scale=MatchLowercase]{Andale Mono}
+\newfontfamily{\J}[Scale=0.85]{Osaka}
+\newfontfamily{\C}[Scale=1.0]{STHeiti}
+
+\title{\C 论文标题}
+\author{\C 张华}
+%\date{}                                           % Activate to display a given date or no date
+
+
+
+\begin{document}
+\maketitle
+
+% For many users, the previous commands will be enough.
+% If you want to directly input Unicode, add an Input Menu or Keyboard to the menu bar 
+% using the International Panel in System Preferences.
+% Unicode must be typeset using a font containing the appropriate characters.
+% Remove the comment signs below for examples.
+
+% \newfontfamily{\A}{Geeza Pro}
+% \newfontfamily{\H}[Scale=0.9]{Lucida Grande}
+
+
+% Here are some multilingual Unicode fonts: this is Arabic text: {\A السلام عليكم}, this is Hebrew: {\H שלום}, 
+{\C
+	关于面部五官替换技术可行性
+
+从技术上来说，为了达到能让玩家可以定制五官的角色，需要独立的一个个制作好眼睛，嘴巴，眉毛的样式，然后于运行时，在玩家的选择下即使替换相应的五官部件到人物面部上，需要程序员做具有替换机制的控制程序．
+从流程上来说，制作一个眼睛或嘴巴，或眉毛却不能简单的独立制作，只有把它们组合起来，跟着面部一起在３Ｄ内容制作工具(Maya, 3DsMax)中预览到整体效果，才能不断的修正和制作．
+所以，从以上这对矛盾来说，能参数化控制(数值调整)的五官调整方案才是优选的，其次才是mesh或texture/uv的替换，这需要美术与程序的互相配合．
+
+通过对<<九州天空城>>的逆向
+１．眼球可以用参数方式调整高光方向，表面反射率，而其周围的睫毛肯定要美术人员来做独立的双面小模型，眼纹使用另一层tatoo纹理来叠加
+２．嘴型和唇色可以选择通过预生成纹理的方法来组合嘴型与面部纹理，其对应的diffuse + normal + specular纹理中，可以考虑只修改diffuse，这需要美术先做好整体效果，然后指定面部纹理上一个嘴巴对应区域内一个小纹理的独立导出，然后多个这样的嘴巴部位的纹理，于游戏载入的某个阶段，提前生成组合好的面部整体的纹理，与玩家选择面部时，整体替换使用，这么一来兼顾了性能．其Unity中的实现，需要用到Texture2D.GetPixels(...), Texture2D.SetPixels(...)来替换纹理的局部．
+}
+and here's some Japanese: {\J 今日は}.
+{\C 您好!}
+
+
+\end{document}  
